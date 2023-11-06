@@ -3,6 +3,14 @@ public class Epic extends Task implements EpicInterface
     private String name;
     private int taskStatus;
 
+    public Epic(String name) {
+        super(name);
+    }
+
+    public Epic(String name, TaskStatus status) {
+        super(name);
+    }
+
     @Override
     public void deleteAllTask() {
 
@@ -25,7 +33,6 @@ public class Epic extends Task implements EpicInterface
 
     @Override
     public void addTask() {
-
     }
 
     @Override

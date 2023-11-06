@@ -1,14 +1,20 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Task implements TaskInterface
 {
     private String name;
-    private int taskStatus;
+    private int count = 0;
+    ArrayList<Task> taskList = new ArrayList<>();
 
-    public Task() {
+
+    public Task(String name) {
+        this.name = name;
     }
 
-    public Task(String name, int taskStatus) {
+    public Task(String name, TaskStatus status) {
         this.name = name;
-        this.taskStatus = taskStatus;
     }
 
     public String getName() {
@@ -19,16 +25,30 @@ public class Task implements TaskInterface
         this.name = name;
     }
 
-    public int getTaskStatus() {
-        return taskStatus;
+    public int getCount() {
+        return count;
     }
 
-    public void setTaskStatus(int taskStatus) {
-        this.taskStatus = taskStatus;
+    public void setCount(int count) {
+        this.count = count;
     }
+
+
 
     @Override
     public void addTask() {
+        Menu.displayAddTask();
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        TaskStatus taskStatus = TaskStatus.NEW;
+        Task newTask = new Task(name, taskStatus);
+        taskList.add(newTask);
+        Menu.displayCompleteAddTask();
+
+    }
+
+    @Override
+    public void addSubTask() {
 
     }
 
@@ -39,6 +59,11 @@ public class Task implements TaskInterface
 
     @Override
     public void completeTask() {
+
+    }
+
+    @Override
+    public void taskChangeStatus() {
 
     }
 }
